@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 21:09:25 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/19 19:31:21 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/19 22:04:02 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -332,6 +332,57 @@ int	get_pos(t_stack **stack, int num)
 	return (-1);
 }
 
+int	best_in_a(t_stack **a, int num)
+{
+	t_stack	*current;
+	int		right_pos;
+	int		actions;
+
+	right_pos = -1;
+	current = *a;
+	while (current)
+	{
+		if (current->value < num && current->next->value > num)
+			right_pos = current->next->value;
+		else if (num > get_median(a, 1) || num < get_median(a, 2))
+			right_pos = get_median(a, 2);
+		current = current->next;
+	}
+	if (right_pos == -1)
+		return (-1);
+	if (get_pos(a, right_pos) <= (ft_lstiter(*a) / 2))
+		actions += get_pos(a, right_pos);
+	else
+		actions += ft_lstiter(*a) - get_pos(a, right_pos);
+	return (actions);
+}
+
+int	calc_best(t_stack **a, t_stack **b)
+{
+	t_stack *tmp;
+	int		lowest;
+	int		actions;
+	int		num;
+
+	lowest = ft_lstiter(*a) + ft_lstiter(*b);
+	actions = 0;
+	tmp = *b;
+	while (tmp)
+	{
+		actions = best_in_a(a, tmp->value);
+		if (get_pos(b, tmp->value) <= (ft_lstiter(*b) / 2))
+			actions += tmp->index;
+		else
+			actions += ft_lstiter(*b) - tmp->index;
+		if (actions < lowest)
+		{
+			lowest = actions;
+			num = tmp->value;
+		}
+		tmp = tmp->next;
+	}
+	return (num);
+}
 
 void	best_move(t_stack **a, t_stack **b)
 {
@@ -349,35 +400,6 @@ void	best_move(t_stack **a, t_stack **b)
 	}
 	sort_3(a);
 	
-	while (*b)
-	{
-		if (ft_lstlast(*b)->value == get_median(b, 1))
-			rrb(b, 1);
-		else if ((*b)->next && (*b)->next->value == get_median(b, 1))
-			sb(b);
-		current = *a;
-		while (current)
-		{
-			if (current->next && current->value < (*b)->value && current->next->value > (*b)->value)
-				ra(a, 1);
-			else if ((*b)->value > get_median(a, 1) || (*b)->value < get_median(a, 2))
-			{
-				if (current->value == get_median(a, 2))
-				{
-					if (current->index <= (ft_lstiter(*a) / 2))
-						ra(a, 1);
-					else
-						rra(a, 1);
-				}
-			}
-			else
-			{
-				pb(a, b);
-				break ;
-			}
-			current = current->next;
-		}
-	}
 }
 
 void	selection_sort(t_stack **a, t_stack **b)
