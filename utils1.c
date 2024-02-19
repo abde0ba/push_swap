@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 13:49:45 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/11 22:00:47 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/13 18:50:42 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static int	check_sign(const char *str)
 	i = 0;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
+	if (!str[i])
+		error_handler();
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		i++;

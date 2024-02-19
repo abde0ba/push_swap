@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:45:50 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/12 22:23:29 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/14 13:57:27 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,9 @@ void	pa(t_stack **a, t_stack **b)
 	*a = tmp;
 	index = 0;
 	tmp = *a;
-	while (tmp)
-	{
-		tmp->index = index;
-		index++;
-		tmp = tmp->next;
-	}
+	indexing(tmp);
+	tmp = *b;
+	indexing(tmp);
 	write(1, "pa\n", 3);
 }
 
@@ -72,17 +69,15 @@ void	pb(t_stack **a, t_stack **b)
 	t_stack	*tmp;
 	int		index;
 
+	if (!*a)
+		return ;
 	tmp = *a;
 	*a = (*a)->next;
 	tmp->next = *b;
 	index = 0;
 	*b = tmp;
-	while (tmp)
-	{
-		tmp->index = index;
-		index++;
-		tmp = tmp->next;
-	}
+	indexing(tmp);
 	tmp = *a;
+	indexing(tmp);
 	write(1, "pb\n", 3);
 }

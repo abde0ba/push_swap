@@ -2,6 +2,15 @@
 	"files.associations": {
 		"algorithm": "c",
 		"chrono": "c",
-		"iterator": "c"
+		"iterator": "c",
+		"ratio": "c",
+		"__functional_base": "c",
+		"array": "c",
+		"istream": "c",
+		"locale": "c",
+		"memory": "c",
+		"tuple": "c",
+		"utility": "c",
+		"__locale": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:32:25 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/12 21:39:39 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/19 12:47:42 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct s_stack
 {
 	int				value;
 	int				index;
-	int				flag;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -37,8 +36,10 @@ int		ft_lstiter(t_stack *lst);
 t_stack	*ft_lstnew(int value);
 t_stack	*ft_lstlast(t_stack *lst);
 int		check_min(int num, t_stack **stack);
+void	find_min_in_3(int min, t_stack **a);
 void	find_min_in_4(int min, t_stack **a, t_stack **b);
 void	find_min_in_5(int min, t_stack **a, t_stack **b);
+void	indexing(t_stack *tmp);
 
 /**** Actions *****/
 
@@ -47,15 +48,15 @@ void	sb(t_stack **b);
 void	ss(t_stack **a, t_stack **b);
 void	pa(t_stack **a, t_stack **b);
 void	pb(t_stack **a, t_stack **b);
-void	ra(t_stack **a);
-void	rb(t_stack **b);
+void	ra(t_stack **a, int display);
+void	rb(t_stack **b, int display);
 void	rr(t_stack **a, t_stack **b);
-void	rra(t_stack **a);
-void	rrb(t_stack **b);
+void	rra(t_stack **a, int display);
+void	rrb(t_stack **b, int display);
 void	rrr(t_stack **a, t_stack **b);
 
 void	sort(t_stack **a, t_stack **b);
-void	sort_3(t_stack **a, t_stack **b);
+void	sort_3(t_stack **a);
 void	sort_5(t_stack **a, t_stack **b);
 
 #endif
