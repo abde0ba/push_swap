@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:32:25 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/19 12:47:42 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/20 20:32:45 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_stack
 {
 	int				value;
 	int				index;
+	int				sub;
 	struct s_stack	*next;
 }	t_stack;
 

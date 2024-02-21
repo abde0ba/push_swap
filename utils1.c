@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 13:49:45 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/13 18:50:42 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/20 20:35:31 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ t_stack	*ft_lstnew(int value)
 		return (NULL);
 	node->value = value;
 	node->next = NULL;
+	node->sub = 0;
 	return (node);
 }
 
