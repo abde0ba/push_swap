@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:25:43 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/23 15:16:10 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:44:32 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ra(t_stack **a, int display)
 	t_stack	*tmp;
 	t_stack	*last;
 
-	if (ft_lstiter(*a) < 2)
+	if (ft_lstsize(*a) < 2)
 		return ;
 	tmp = *a;
 	*a = (*a)->next;
@@ -35,7 +35,7 @@ void	rb(t_stack **b, int display)
 	t_stack	*tmp;
 	t_stack	*last;
 
-	if (ft_lstiter(*b) < 2)
+	if (ft_lstsize(*b) < 2)
 		return ;
 	tmp = *b;
 	*b = (*b)->next;
@@ -60,7 +60,7 @@ void	rra(t_stack **a, int display)
 	t_stack	*tmp;
 	t_stack	*last;
 
-	if (ft_lstiter(*a) < 2)
+	if (ft_lstsize(*a) < 2)
 		return ;
 	tmp = *a;
 	while (tmp)

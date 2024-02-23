@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 11:53:52 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/23 15:21:27 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:45:03 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ void	longest_sub(t_stack **a)
 	int	*lis;
 	int	i;
 
-	lis = malloc(ft_lstiter(*a) * sizeof(int));
+	lis = malloc(ft_lstsize(*a) * sizeof(int));
 	if (!lis)
 		return ;
 	lis[0] = 1;
 	i = 1;
 	arr = list_to_arr(a);
-	longest_increasing_subsequence(a, arr, ft_lstiter(*a));
+	longest_increasing_subsequence(a, arr, ft_lstsize(*a));
 }

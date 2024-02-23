@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 11:49:37 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/23 15:23:35 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:44:54 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int	*list_to_arr(t_stack **stack)
 	int		*arr;
 	int		i;
 
-	arr = malloc(ft_lstiter(*stack) * sizeof(int));
+	arr = malloc(ft_lstsize(*stack) * sizeof(int));
 	if (!arr)
 		return (NULL);
 	i = 0;
 	tmp = *stack;
-	while (tmp && i < ft_lstiter(*stack))
+	while (tmp && i < ft_lstsize(*stack))
 	{
 		arr[i] = tmp->value;
 		tmp = tmp->next;
@@ -41,10 +41,10 @@ int	*get_sequence(t_stack **a, int *lis, int *arr, int end)
 
 	clen = lis[end];
 	index = end;
-	sequence = malloc(ft_lstiter(*a) * sizeof(int));
+	sequence = malloc(ft_lstsize(*a) * sizeof(int));
 	if (!sequence)
 		return (0);
-	i = ft_lstiter(*a) - 1;
+	i = ft_lstsize(*a) - 1;
 	while (i >= 0)
 	{
 		if (lis[i] == clen && arr[i] < arr[index])

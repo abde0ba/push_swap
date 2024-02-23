@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 11:57:06 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/23 15:09:50 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/23 22:59:54 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	loop_in_a(t_stack **a, int *right_pos, int num)
 		if (current->next && current->value < num && current->next->value > num)
 		{
 			*right_pos = current->next->value;
-			break ;
+			return ;
 		}
 		current = current->next;
 	}
@@ -35,7 +35,7 @@ static int	*best_in_a(t_stack **a, int num, int *arr)
 	int	size;
 	int	min_and_pos[2];
 
-	(1) && (right_pos = -1, actions = 0, size = ft_lstiter(*a),
+	(1) && (right_pos = -1, actions = 0, size = ft_lstsize(*a),
 	min_and_pos[0] = get_median(a, 2));
 	if (size && (num > get_median(a, 1) || num < min_and_pos[0]))
 		right_pos = min_and_pos[0];
@@ -61,10 +61,10 @@ static void	calc_best(t_stack **a, t_stack **b, int *num)
 	int		arr[2];
 	int		size;
 
-	(1) && (lowest = ft_lstiter(*a) + ft_lstiter(*b), actions = 0, tmp = *b);
+	(1) && (lowest = ft_lstsize(*a) + ft_lstsize(*b), actions = 0, tmp = *b);
 	while (tmp)
 	{
-		size = ft_lstiter(*b);
+		size = ft_lstsize(*b);
 		best_in_a(a, tmp->value, arr);
 		actions = arr[0];
 		if (get_pos(b, tmp->value) <= (size / 2))
@@ -90,14 +90,14 @@ static void	sort_a_and_b(t_stack **a, t_stack **b)
 		calc_best(a, b, num);
 		if (!*b)
 			break ;
-		if (get_pos(b, num[0]) <= (ft_lstiter(*b) / 2) && (*b)->value != num[0])
+		if (get_pos(b, num[0]) <= (ft_lstsize(*b) / 2) && (*b)->value != num[0])
 			rb(b, 1);
-		else if (get_pos(b, num[0]) > (ft_lstiter(*b) / 2)
+		else if (get_pos(b, num[0]) > (ft_lstsize(*b) / 2)
 			&& (*b)->value != num[0])
 			rrb(b, 1);
 		else if ((*b)->value == num[0] && get_pos(a, num[1]) != 0)
 		{
-			if (get_pos(a, num[1]) <= (ft_lstiter(*a) / 2))
+			if (get_pos(a, num[1]) <= (ft_lstsize(*a) / 2))
 				ra(a, 1);
 			else
 				rra(a, 1);
@@ -124,7 +124,7 @@ void	best_move(t_stack **a, t_stack **b)
 	sort_a_and_b(a, b);
 	while (get_pos(a, get_median(a, 2)) != 0)
 	{
-		if (get_pos(a, get_median(a, 2)) <= (ft_lstiter(*a) / 2))
+		if (get_pos(a, get_median(a, 2)) <= (ft_lstsize(*a) / 2))
 			ra(a, 1);
 		else
 			rra(a, 1);

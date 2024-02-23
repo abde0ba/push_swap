@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 21:09:25 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/23 14:54:01 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:45:18 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,14 +107,14 @@ void	bubble_sort(int *sorted, int n)
 
 void	sort(t_stack **a, t_stack **b)
 {
-	if (ft_lstiter(*a) == 2)
+	if (ft_lstsize(*a) == 2)
 		sa(a);
-	else if (ft_lstiter(*a) == 3)
+	else if (ft_lstsize(*a) == 3)
 		sort_3(a);
-	else if (ft_lstiter(*a) == 4)
+	else if (ft_lstsize(*a) == 4)
 		sort_4(a, b);
-	else if (ft_lstiter(*a) == 5)
+	else if (ft_lstsize(*a) == 5)
 		sort_5(a, b);
-	else if (ft_lstiter(*a) <= 500)
+	else if (ft_lstsize(*a) <= 500)
 		best_move(a, b);
 }

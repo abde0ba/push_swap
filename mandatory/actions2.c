@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:16:14 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/23 15:16:43 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:45:08 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	rrb(t_stack **b, int display)
 	t_stack	*tmp;
 	t_stack	*last;
 
-	if (ft_lstiter(*b) < 2)
+	if (ft_lstsize(*b) < 2)
 		return ;
 	tmp = *b;
 	while (tmp)

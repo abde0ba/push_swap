@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:32:25 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/23 15:49:01 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:45:13 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	error_handler(void);
 void	check_num(char **str);
 int		check_sorted(t_stack *a);
 void	ft_lstclear(t_stack **lst);
-int		ft_lstiter(t_stack *lst);
+int		ft_lstsize(t_stack *lst);
 t_stack	*ft_lstnew(int value);
 t_stack	*ft_lstlast(t_stack *lst);
 int		check_min(int num, t_stack **stack);

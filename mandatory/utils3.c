@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:55:10 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/23 10:31:30 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:45:24 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_lstclear(t_stack **lst)
 	}
 }
 
-int	ft_lstiter(t_stack *lst)
+int	ft_lstsize(t_stack *lst)
 {
 	int	counter;
 
