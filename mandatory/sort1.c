@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils6.c                                           :+:      :+:    :+:   */
+/*   sort1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:26:39 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/17 14:52:56 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/23 14:42:50 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	rrr(t_stack **a, t_stack **b)
-{
-	rra(a, 0);
-	rrb(b, 0);
-	write(1, "rrr\n", 4);
-}
 
 int	check_min(int num, t_stack **stack)
 {
@@ -81,6 +74,7 @@ void	find_min_in_4(int min, t_stack **a, t_stack **b)
 		rra(a, 1);
 	pb(a, b);
 }
+
 void	find_min_in_3(int min, t_stack **a)
 {
 	if (min == 1)

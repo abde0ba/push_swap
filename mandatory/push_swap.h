@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:32:25 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/20 20:32:45 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/23 15:49:01 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,23 @@ void	rra(t_stack **a, int display);
 void	rrb(t_stack **b, int display);
 void	rrr(t_stack **a, t_stack **b);
 
+/******* Longest Increasing Subsequence *******/
+
+int		*list_to_arr(t_stack **stack);
+int		*get_sequence(t_stack **a, int *lis, int *arr, int end);
+void	allocate_for_2d(int **result, int *sequence, int size);
+int		*ft_subsequence(int arr[], int parent[], int endIndex);
+void	fill_sub(int *arr, int lis[], int parent[], int index_end_and_size[]);
+int		check_if_found(int *arr, int num);
+int		check_sub_in_a(t_stack **a);
+void	longest_increasing_subsequence(t_stack **a, int *arr, int n);
+void	longest_sub(t_stack **a);
+
+int		get_median(t_stack **stack, int set);
+int		get_pos(t_stack **stack, int num);
+void	best_move(t_stack **a, t_stack **b);
+
+void	bubble_sort(int *sorted, int n);
 void	sort(t_stack **a, t_stack **b);
 void	sort_3(t_stack **a);
 void	sort_5(t_stack **a, t_stack **b);

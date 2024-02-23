@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 13:49:55 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/17 12:30:12 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/23 14:55:34 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,6 @@ int	main(int ac, char **av)
 		init_stack_a(&a, ac, av);
 		if (check_sorted(a))
 			sort(&a, &b);
-		// while (a)
-		// {
-		// 	printf("%d : %d\n", a->index, a->value);
-		// 	a = a->next;
-		// }
 	}
 	return (0);
 }
