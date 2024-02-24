@@ -6,13 +6,13 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 11:57:06 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/24 15:50:43 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/24 19:03:05 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	loop_in_a(t_stack **a, int *right_pos, int num)
+void	loop_in_a(t_stack **a, int *right_pos, int	*pos_in_a, int num)
 {
 	t_stack	*current;
 
@@ -22,6 +22,7 @@ void	loop_in_a(t_stack **a, int *right_pos, int num)
 		if (current->next && current->value < num && current->next->value > num)
 		{
 			*right_pos = current->next->value;
+			*pos_in_a = current->next->index;
 			return ;
 		}
 		current = current->next;
@@ -30,27 +31,33 @@ void	loop_in_a(t_stack **a, int *right_pos, int num)
 
 static int	*best_in_a(t_stack **a, int num, int *arr)
 {
-	int	right_pos;
+	int	value;
 	int	actions;
 	int	size;
-	int	min_and_pos[2];
-	int	max;
+	int	min_and_max[2];
+	int	pos;
 
-	(1) && (right_pos = -1, actions = 0, size = ft_lstsize(*a),
-	min_and_pos[0] = get_median(a, 2), max = get_median(a, 1));
-	if (size && (num > max || num < min_and_pos[0]))
-		right_pos = min_and_pos[0];
-	if ((*a)->value > num && num > ft_lstlast(*a)->value)
-		right_pos = (*a)->value;
+	(1) && (value = -1, actions = 0, size = ft_lstsize(*a),
+	get_min_and_max(a, min_and_max));
+	if (size && (num > min_and_max[1] || num < min_and_max[0]))
+	{
+		value = min_and_max[0];
+		pos = get_pos(a, value);
+	}
+	else if ((*a)->value > num && num > ft_lstlast(*a)->value)
+	{
+		value = (*a)->value;
+		pos = get_pos(a, value);
+	}
 	else
-		loop_in_a(a, &right_pos, num);
-	min_and_pos[0] = get_pos(a, right_pos);
-	if (min_and_pos[0] <= (size / 2))
-		actions += min_and_pos[0];
+		loop_in_a(a, &value, &pos, num);
+	if (pos <= (size / 2))
+		actions += pos;
 	else
-		actions += size - min_and_pos[0];
+		actions += size - pos;
 	arr[0] = actions;
-	arr[1] = right_pos;
+	arr[1] = value;
+	arr[2] = pos;
 	return (arr);
 }
 
@@ -59,24 +66,24 @@ static void	calc_best(t_stack **a, t_stack **b, int *num)
 	t_stack	*tmp;
 	int		lowest;
 	int		actions;
-	int		arr[2];
-	int		size_and_pos_tmp[2];
+	int		arr[4];
+	int		size_b;
 
-	(1) && (lowest = ft_lstsize(*a) + ft_lstsize(*b), actions = 0, tmp = *b,
-	size_and_pos_tmp[0] = ft_lstsize(*b));
+	(1) && (size_b = ft_lstsize(*b), lowest = ft_lstsize(*a) + size_b, actions = 0, tmp = *b);
 	while (tmp)
 	{
-		(1) && (best_in_a(a, tmp->value, arr),
-		actions = arr[0], size_and_pos_tmp[1] = get_pos(b, tmp->value));
-		if (size_and_pos_tmp[1] <= (size_and_pos_tmp[0] / 2))
+		(1) && (best_in_a(a, tmp->value, arr), actions = arr[0]);
+		if (tmp->index <= (size_b / 2))
 			actions += tmp->index;
 		else
-			actions += size_and_pos_tmp[0] - tmp->index;
+			actions += size_b - tmp->index;
 		if (actions < lowest)
 		{
 			lowest = actions;
 			num[0] = tmp->value;
 			num[1] = arr[1];
+			num[2] = tmp->index;
+			num[3] = arr[2];
 		}
 		tmp = tmp->next;
 	}
@@ -84,45 +91,41 @@ static void	calc_best(t_stack **a, t_stack **b, int *num)
 
 static void	sort_a_and_b(t_stack **a, t_stack **b)
 {
-	int		num[2];
+	int		num[4];
 	int		size_a;
 	int		size_b;
 
 	while (*a || *b)
 	{
+		if (!*b)
+			break ;
 		calc_best(a, b, num);
 		size_b = ft_lstsize(*b);
 		size_a = ft_lstsize(*a);
-		// num[0] = (*b)->value;
-		// num[1] = (*a)->value;
-		if (!*b)
-			break ;
 		if ((*b)->value != num[0])
 		{
-			if (get_pos(b, num[0]) <= (size_b / 2))
+			if (num[2] <= (size_b / 2))
 				while ((*b)->value != num[0])
 					rb(b, 1);
 			else
 				while ((*b)->value != num[0])
 					rrb(b, 1);
 		}
-		else if ((*b)->value == num[0] && get_pos(a, num[1]) != 0)
-		{
-
-			if (get_pos(a, num[1]) <= (size_a / 2))
-				while ((*a)->value != num[1])
-					ra(a, 1);
-			else
-				while ((*a)->value != num[1])
-					rra(a, 1);
-		}
-		if ((*b)->value == num[0] && get_pos(a, num[1]) == 0)
+		if (num[3] <= (size_a / 2))
+			while ((*a)->value != num[1])
+				ra(a, 1);
+		else
+			while ((*a)->value != num[1])
+				rra(a, 1);
+		if ((*b)->value == num[0] && (*a)->value == num[1])
 			pa(a, b);
 	}
 }
 
 void	best_move(t_stack **a, t_stack **b)
 {
+	int	min_and_max[2];
+	
 	longest_sub(a);
 	while (check_sub_in_a(a))
 	{
@@ -136,6 +139,7 @@ void	best_move(t_stack **a, t_stack **b)
 			ra(a, 1);
 	}
 	sort_a_and_b(a, b);
+	get_min_and_max(a, min_and_max);
 	while (get_pos(a, get_median(a, 2)) != 0)
 	{
 		if (get_pos(a, get_median(a, 2)) <= (ft_lstsize(*a) / 2))

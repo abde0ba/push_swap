@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 12:02:32 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/24 15:35:11 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/24 18:33:51 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,27 @@ int	check_sub_in_a(t_stack **a)
 		tmp = tmp->next;
 	}
 	return (0);
+}
+
+int	*get_min_and_max(t_stack **stack, int *min_and_max)
+{
+	t_stack	*current;
+	int		*sorted;
+	int		i;
+	int		size;
+
+	sorted = malloc(ft_lstsize(*stack) * sizeof(int));
+	if (!sorted)
+		return (NULL);
+	(1) && (i = 0, current = *stack, size = ft_lstsize(*stack));
+	while (current)
+	{
+		sorted[i] = current->value;
+		i++;
+		current = current->next;
+	}
+	bubble_sort(sorted, size);
+	min_and_max[0] = sorted[0];
+	min_and_max[1] = sorted[size - 1];
+	return (free(sorted), min_and_max);
 }

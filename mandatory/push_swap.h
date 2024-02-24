@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:32:25 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/23 16:45:13 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/24 18:32:58 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	longest_increasing_subsequence(t_stack **a, int *arr, int n);
 void	longest_sub(t_stack **a);
 
 int		get_median(t_stack **stack, int set);
+int	*get_min_and_max(t_stack **stack, int *min_and_max);
 int		get_pos(t_stack **stack, int num);
 void	best_move(t_stack **a, t_stack **b);
 
