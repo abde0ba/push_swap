@@ -29,11 +29,10 @@ void	loop_in_a(t_stack **a, int *right_pos, int	*pos_in_a, int num)
 	}
 }
 
-static int	*best_in_a(t_stack **a, int num, int *arr)
+static int	*best_in_a(t_stack **a, int num, int *arr, int size)
 {
 	int	value;
 	int	actions;
-	int	size;
 	int	min_and_max[2];
 	int	pos;
 
@@ -72,7 +71,7 @@ static void	calc_best(t_stack **a, t_stack **b, int *num)
 	(1) && (size_b = ft_lstsize(*b), lowest = ft_lstsize(*a) + size_b, actions = 0, tmp = *b);
 	while (tmp)
 	{
-		(1) && (best_in_a(a, tmp->value, arr), actions = arr[0]);
+		(1) && (best_in_a(a, tmp->value, arr, (lowest - size_b)), actions = arr[0]);
 		if (tmp->index <= (size_b / 2))
 			actions += tmp->index;
 		else
@@ -95,13 +94,9 @@ static void	sort_a_and_b(t_stack **a, t_stack **b)
 	int		size_a;
 	int		size_b;
 
-	while (*a || *b)
+	while (*b)
 	{
-		if (!*b)
-			break ;
-		calc_best(a, b, num);
-		size_b = ft_lstsize(*b);
-		size_a = ft_lstsize(*a);
+		(1) && (calc_best(a, b, num), size_b = ft_lstsize(*b), size_a = ft_lstsize(*a));
 		if ((*b)->value != num[0])
 		{
 			if (num[2] <= (size_b / 2))
@@ -125,6 +120,7 @@ static void	sort_a_and_b(t_stack **a, t_stack **b)
 void	best_move(t_stack **a, t_stack **b)
 {
 	int	min_and_max[2];
+	int	size_a;
 	
 	longest_sub(a);
 	while (check_sub_in_a(a))
@@ -140,9 +136,10 @@ void	best_move(t_stack **a, t_stack **b)
 	}
 	sort_a_and_b(a, b);
 	get_min_and_max(a, min_and_max);
-	while (get_pos(a, get_median(a, 2)) != 0)
+	size_a = ft_lstsize(*a);
+	while (get_pos(a, min_and_max[0]) != 0)
 	{
-		if (get_pos(a, get_median(a, 2)) <= (ft_lstsize(*a) / 2))
+		if (get_pos(a, min_and_max[0]) <= (size_a / 2))
 			ra(a, 1);
 		else
 			rra(a, 1);

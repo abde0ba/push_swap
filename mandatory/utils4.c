@@ -32,10 +32,9 @@ int	get_median(t_stack **stack, int set)
 	int		i;
 	int		size;
 
-	sorted = malloc(ft_lstsize(*stack) * sizeof(int));
+	(1) && (i = 0, current = *stack, size = ft_lstsize(*stack), sorted = malloc(size * sizeof(int)));
 	if (!sorted)
 		return (-1);
-	(1) && (i = 0, current = *stack, size = ft_lstsize(*stack));
 	while (current)
 	{
 		sorted[i] = current->value;
