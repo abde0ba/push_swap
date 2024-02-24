@@ -90,17 +90,25 @@ static void	sort_a_and_b(t_stack **a, t_stack **b)
 		calc_best(a, b, num);
 		if (!*b)
 			break ;
-		if (get_pos(b, num[0]) <= (ft_lstsize(*b) / 2) && (*b)->value != num[0])
-			rb(b, 1);
-		else if (get_pos(b, num[0]) > (ft_lstsize(*b) / 2)
-			&& (*b)->value != num[0])
-			rrb(b, 1);
+		if ((*b)->value != num[0])
+		{
+			while ((*b)->value != num[0])
+			{
+				if (get_pos(b, num[0]) <= (ft_lstsize(*b) / 2))
+					rb(b, 1);
+				else
+					rrb(b, 1);
+			}
+		}
 		else if ((*b)->value == num[0] && get_pos(a, num[1]) != 0)
 		{
+			while (get_pos(a, num[1]) != 0)
+			{
 			if (get_pos(a, num[1]) <= (ft_lstsize(*a) / 2))
 				ra(a, 1);
 			else
 				rra(a, 1);
+			}
 		}
 		if ((*b)->value == num[0] && get_pos(a, num[1]) == 0)
 			pa(a, b);

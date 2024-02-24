@@ -48,7 +48,6 @@ void	ss(t_stack **a, t_stack **b)
 void	pa(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
-	int		index;
 
 	tmp = *b;
 	if ((*b))
@@ -56,7 +55,6 @@ void	pa(t_stack **a, t_stack **b)
 	if (tmp)
 		tmp->next = *a;
 	*a = tmp;
-	index = 0;
 	tmp = *a;
 	indexing(tmp);
 	tmp = *b;
@@ -67,14 +65,12 @@ void	pa(t_stack **a, t_stack **b)
 void	pb(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
-	int		index;
 
 	if (!*a)
 		return ;
 	tmp = *a;
 	*a = (*a)->next;
 	tmp->next = *b;
-	index = 0;
 	*b = tmp;
 	indexing(tmp);
 	tmp = *a;

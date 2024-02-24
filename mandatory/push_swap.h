@@ -23,6 +23,7 @@ typedef struct s_stack
 	int				value;
 	int				index;
 	int				sub;
+	int				target;
 	struct s_stack	*next;
 }	t_stack;
 

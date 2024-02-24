@@ -59,13 +59,11 @@ void	longest_sub(t_stack **a)
 {
 	int	*arr;
 	int	*lis;
-	int	i;
 
 	lis = malloc(ft_lstsize(*a) * sizeof(int));
 	if (!lis)
 		return ;
 	lis[0] = 1;
-	i = 1;
 	arr = list_to_arr(a);
 	longest_increasing_subsequence(a, arr, ft_lstsize(*a));
 }
