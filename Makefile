@@ -9,7 +9,7 @@ HEADER= mandatory/push_swap.h
 
 CC= cc
 
-CFLAGS= -Wall -Wextra -Werror
+CFLAGS= -Wall -Wextra 
 
 RM= rm -rf
 
