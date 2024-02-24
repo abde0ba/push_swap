@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 11:57:06 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/24 19:03:05 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/24 21:40:41 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,13 @@ void	loop_in_a(t_stack **a, int *right_pos, int	*pos_in_a, int num)
 	}
 }
 
-static int	*best_in_a(t_stack **a, int num, int *arr, int size)
+static int	*best_in_a(t_stack **a, int num, int *arr, int size, int *min_and_max)
 {
 	int	value;
 	int	actions;
-	int	min_and_max[2];
 	int	pos;
 
-	(1) && (value = -1, actions = 0, size = ft_lstsize(*a),
-	get_min_and_max(a, min_and_max));
+	(1) && (value = -1, actions = 0, size = ft_lstsize(*a));
 	if (size && (num > min_and_max[1] || num < min_and_max[0]))
 	{
 		value = min_and_max[0];
@@ -67,11 +65,13 @@ static void	calc_best(t_stack **a, t_stack **b, int *num)
 	int		actions;
 	int		arr[4];
 	int		size_b;
-
+	int	min_and_max[2];
+	
+	get_min_and_max(a, min_and_max);
 	(1) && (size_b = ft_lstsize(*b), lowest = ft_lstsize(*a) + size_b, actions = 0, tmp = *b);
 	while (tmp)
 	{
-		(1) && (best_in_a(a, tmp->value, arr, (lowest - size_b)), actions = arr[0]);
+		(1) && (best_in_a(a, tmp->value, arr, (lowest - size_b), min_and_max), actions = arr[0]);
 		if (tmp->index <= (size_b / 2))
 			actions += tmp->index;
 		else
@@ -97,23 +97,41 @@ static void	sort_a_and_b(t_stack **a, t_stack **b)
 	while (*b)
 	{
 		(1) && (calc_best(a, b, num), size_b = ft_lstsize(*b), size_a = ft_lstsize(*a));
-		if ((*b)->value != num[0])
+		while ((*b)->value != num[0] || (*a)->value != num[1])
 		{
-			if (num[2] <= (size_b / 2))
-				while ((*b)->value != num[0])
-					rb(b, 1);
-			else
-				while ((*b)->value != num[0])
-					rrb(b, 1);
-		}
-		if (num[3] <= (size_a / 2))
-			while ((*a)->value != num[1])
+			if ((*b)->value != num[0] && (*a)->value != num[1] && num[2] <= (size_b / 2) && num[3] <= (size_a / 2))
+				rr(a, b);
+			else if ((*b)->value != num[0] && (*a)->value != num[1] && num[2] > (size_b / 2) && num[3] > (size_a / 2))
+				rrr(a, b);
+			else if ((*b)->value != num[0] && num[2] <= (size_b / 2))
+				rb(b, 1);
+			else if ((*b)->value != num[0] && num[2] > (size_b / 2))
+				rrb(b, 1);
+			else if ((*a)->value != num[1] && num[3] <= (size_a / 2))
 				ra(a, 1);
-		else
-			while ((*a)->value != num[1])
+			else if ((*a)->value != num[1] && num[3] > (size_a / 2))
 				rra(a, 1);
-		if ((*b)->value == num[0] && (*a)->value == num[1])
-			pa(a, b);
+			// if ((*b)->value != num[0] && (*a)->value != num[1])
+			// {
+			// 	if (num[2] <= (size_b / 2) && num[3] <= (size_a / 2))
+			// 			rr(a, b);
+			// 	else if (num[2] > (size_b / 2) && num[3] > (size_a / 2))
+			// 			rrr(a, b);
+			// }
+			// if ((*b)->value != num[0])
+			// {
+			// 	if (num[2] <= (size_b / 2))
+			// 			rb(b, 1);
+			// 	else
+			// 			rrb(b, 1);
+			// }
+			// else if (num[3] <= (size_a / 2))
+			// 		ra(a, 1);
+			// else
+			// 		rra(a, 1);
+		}
+		// if ((*b)->value == num[0] && (*a)->value == num[1])
+		pa(a, b);
 	}
 }
 
