@@ -78,11 +78,8 @@ static void	calc_best(t_stack **a, t_stack **b, int *num)
 			actions += size_b - tmp->index;
 		if (actions < lowest)
 		{
-			lowest = actions;
-			num[0] = tmp->value;
-			num[1] = arr[1];
-			num[2] = tmp->index;
-			num[3] = arr[2];
+			(1) && (lowest = actions, num[0] = tmp->value,
+			num[1] = arr[1], num[2] = tmp->index, num[3] = arr[2]);
 		}
 		tmp = tmp->next;
 	}
@@ -111,26 +108,7 @@ static void	sort_a_and_b(t_stack **a, t_stack **b)
 				ra(a, 1);
 			else if ((*a)->value != num[1] && num[3] > (size_a / 2))
 				rra(a, 1);
-			// if ((*b)->value != num[0] && (*a)->value != num[1])
-			// {
-			// 	if (num[2] <= (size_b / 2) && num[3] <= (size_a / 2))
-			// 			rr(a, b);
-			// 	else if (num[2] > (size_b / 2) && num[3] > (size_a / 2))
-			// 			rrr(a, b);
-			// }
-			// if ((*b)->value != num[0])
-			// {
-			// 	if (num[2] <= (size_b / 2))
-			// 			rb(b, 1);
-			// 	else
-			// 			rrb(b, 1);
-			// }
-			// else if (num[3] <= (size_a / 2))
-			// 		ra(a, 1);
-			// else
-			// 		rra(a, 1);
 		}
-		// if ((*b)->value == num[0] && (*a)->value == num[1])
 		pa(a, b);
 	}
 }

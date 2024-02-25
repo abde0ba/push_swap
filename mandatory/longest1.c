@@ -26,13 +26,27 @@ int	check_if_found(int *arr, int num)
 	return (0);
 }
 
+static void	mark_sub(t_stack **a, int *subsequence)
+{
+	t_stack	*current;
+
+	current = *a;
+	while (current)
+	{
+		if (check_if_found(subsequence, current->value))
+			current->sub = 1;
+		current = current->next;
+	}
+	free(subsequence);
+}
+
 void	longest_increasing_subsequence(t_stack **a, int *arr, int n)
 {
 	int		*lis;
 	int		*parent;
 	int		index_end_and_size[3];
 	int		*subsequence;
-	t_stack	*current;
+
 
 	(1) && (index_end_and_size[0] = 0, index_end_and_size[1] = 0,
 	index_end_and_size[2] = n, lis = malloc(n * sizeof(int)),
@@ -45,25 +59,18 @@ void	longest_increasing_subsequence(t_stack **a, int *arr, int n)
 		parent[index_end_and_size[0]] = -1;
 		index_end_and_size[0]++;
 	}
-	(1) && (fill_sub(arr, lis, parent, index_end_and_size), current = *a);
-	subsequence = ft_subsequence(arr, parent, index_end_and_size[1]);
-	while (current)
-	{
-		if (check_if_found(subsequence, current->value))
-			current->sub = 1;
-		current = current->next;
-	}
+	(1) && (fill_sub(arr, lis, parent, index_end_and_size),
+	subsequence = ft_subsequence(arr, parent, index_end_and_size[1]));
+	mark_sub(a, subsequence);
+	free(lis);
+	free(parent);
 }
 
 void	longest_sub(t_stack **a)
 {
 	int	*arr;
-	int	*lis;
 
-	lis = malloc(ft_lstsize(*a) * sizeof(int));
-	if (!lis)
-		return ;
-	lis[0] = 1;
 	arr = list_to_arr(a);
 	longest_increasing_subsequence(a, arr, ft_lstsize(*a));
+	free(arr);
 }

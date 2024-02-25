@@ -80,6 +80,7 @@ int	main(int ac, char **av)
 		init_stack_a(&a, ac, av);
 		if (check_sorted(a))
 			sort(&a, &b);
+		ft_lstclear(&a);
 	}
 	return (0);
 }

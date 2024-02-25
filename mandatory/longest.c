@@ -34,51 +34,14 @@ int	*list_to_arr(t_stack **stack)
 	return (arr);
 }
 
-int	*get_sequence(t_stack **a, int *lis, int *arr, int end)
-{
-	int	*sequence;
-	int	clen;
-	int	index;
-	int	i;
-	int	size;
-
-	size = ft_lstsize(*a);
-	clen = lis[end];
-	index = end;
-	sequence = malloc(size * sizeof(int));
-	if (!sequence)
-		return (0);
-	i = size - 1;
-	while (i >= 0)
-	{
-		if (lis[i] == clen && arr[i] < arr[index])
-		{
-			sequence[--clen] = arr[i];
-			index = i;
-		}
-		i--;
-	}
-	return (sequence);
-}
-
-void	allocate_for_2d(int **result, int *sequence, int size)
-{
-	size++;
-	result = malloc(2 * sizeof(int *));
-	result[0] = sequence;
-	result[1] = malloc(sizeof(int));
-	result[1] = &size;
-}
-
 int	*ft_subsequence(int arr[], int parent[], int endIndex)
 {
 	int	size;
 	int	i;
 	int	index;
 	int	*sequence;
-	int	**result;
 
-	(1) && (index = endIndex, size = 1, result = NULL);
+	(1) && (index = endIndex, size = 1);
 	while (parent[index] != -1)
 	{
 		index = parent[index];

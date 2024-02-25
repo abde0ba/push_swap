@@ -60,8 +60,6 @@ void	rrr(t_stack **a, t_stack **b);
 /******* Longest Increasing Subsequence *******/
 
 int		*list_to_arr(t_stack **stack);
-int		*get_sequence(t_stack **a, int *lis, int *arr, int end);
-void	allocate_for_2d(int **result, int *sequence, int size);
 int		*ft_subsequence(int arr[], int parent[], int endIndex);
 void	fill_sub(int *arr, int lis[], int parent[], int index_end_and_size[]);
 int		check_if_found(int *arr, int num);
@@ -70,7 +68,7 @@ void	longest_increasing_subsequence(t_stack **a, int *arr, int n);
 void	longest_sub(t_stack **a);
 
 int		get_median(t_stack **stack, int set);
-int	*get_min_and_max(t_stack **stack, int *min_and_max);
+int		*get_min_and_max(t_stack **stack, int *min_and_max);
 int		get_pos(t_stack **stack, int num);
 void	best_move(t_stack **a, t_stack **b);
 
