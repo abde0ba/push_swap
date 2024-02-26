@@ -7,22 +7,38 @@ OBJS=$(SRCS:.c=.o)
 
 HEADER= mandatory/push_swap.h
 
+B_HEADER= bonus/push_swap_bonus.h
+
+BONUS = checker
+
+B_SRCS= bonus/actions.c bonus/actions1.c bonus/actions2.c \
+		bonus/main.c bonus/utils1.c bonus/utils2.c bonus/utils3.c bonus/utils4.c \
+		bonus/get_next_line.c bonus/get_next_line_utils.c
+
+B_OBJS=$(B_SRCS:.c=.o)
+
 CC= cc
 
-CFLAGS= -Wall -Wextra -Werror
+CFLAGS= -Wall -Wextra
 
 RM= rm -rf
 
 $(NAME): $(OBJS)
 		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.c $(HEADER)
+$(OBJS) : %.o: %.c $(HEADER)
+		$(CC) $(CFLAGS) -c $< -o $@
+
+$(B_OBJS) : %.o: %.c $(B_HEADER)
 		$(CC) $(CFLAGS) -c $< -o $@
 
 all : $(NAME)
 
+bonus : $(B_OBJS)
+		$(CC) $(CFLAGS) $(B_OBJS) -o $(BONUS)
+
 clean :
-		$(RM) $(OBJS)
+		$(RM) $(OBJS) $(B_OBJS)
 fclean : clean
-			$(RM) $(NAME)
+			$(RM) $(NAME) $(BONUS)
 re : fclean all

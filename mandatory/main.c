@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: darkab <darkab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 13:49:55 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/24 15:34:52 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/25 15:52:44 by darkab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	init_stack_a(t_stack **a, int ac, char **av)
 	{
 		splitted = ft_split(av[i], ' ');
 		if (!splitted)
-			free(splitted);
+			return ;
 		check_num(splitted);
 		j = 0;
 		while (splitted[j])

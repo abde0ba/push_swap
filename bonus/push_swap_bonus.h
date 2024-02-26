@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: darkab <darkab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:32:25 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/25 16:04:48 by darkab           ###   ########.fr       */
+/*   Updated: 2024/02/26 10:39:15 by darkab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -26,6 +26,26 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+/**** Get_Next_Line *****/
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
+# endif
+
+# include <stdlib.h>
+# include <unistd.h>
+# include <limits.h>
+
+char	*get_next_line(int fd);
+int		ft_strchr(const char *s, int c);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_substr(char *s);
+char	*ft_strdup(char *s1);
+
+
+/**** Utils Of Push Swap *****/
+
+
 char	**ft_split(char const *s, char c);
 int		ft_atoi(const char *str);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
@@ -37,10 +57,9 @@ int		ft_lstsize(t_stack *lst);
 t_stack	*ft_lstnew(int value);
 t_stack	*ft_lstlast(t_stack *lst);
 int		check_min(int num, t_stack **stack);
-void	find_min_in_3(int min, t_stack **a);
-void	find_min_in_4(int min, t_stack **a, t_stack **b);
-void	find_min_in_5(int min, t_stack **a, t_stack **b);
 void	indexing(t_stack *tmp);
+size_t	ft_strlen(const char *str);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 /**** Actions *****/
 
@@ -49,11 +68,11 @@ void	sb(t_stack **b);
 void	ss(t_stack **a, t_stack **b);
 void	pa(t_stack **a, t_stack **b);
 void	pb(t_stack **a, t_stack **b);
-void	ra(t_stack **a, int display);
-void	rb(t_stack **b, int display);
+void	ra(t_stack **a);
+void	rb(t_stack **b);
 void	rr(t_stack **a, t_stack **b);
-void	rra(t_stack **a, int display);
-void	rrb(t_stack **b, int display);
+void	rra(t_stack **a);
+void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
 
 /**** Initializing & Parsing *****/
@@ -61,25 +80,5 @@ void	rrr(t_stack **a, t_stack **b);
 void	check_double(t_stack **a, int num);
 void	add_to_a(t_stack **a, int num, int index);
 void	init_stack_a(t_stack **a, int ac, char **av);
-
-/******* Longest Increasing Subsequence *******/
-
-int		*list_to_arr(t_stack **stack);
-int		*ft_subsequence(int arr[], int parent[], int endIndex);
-void	fill_sub(int *arr, int lis[], int parent[], int index_end_and_size[]);
-int		check_if_found(int *arr, int num);
-int		check_sub_in_a(t_stack **a);
-void	longest_increasing_subsequence(t_stack **a, int *arr, int n);
-void	longest_sub(t_stack **a);
-
-int		get_median(t_stack **stack, int set);
-int		*get_min_and_max(t_stack **stack, int *min_and_max);
-int		get_pos(t_stack **stack, int num);
-void	best_move(t_stack **a, t_stack **b);
-
-void	bubble_sort(int *sorted, int n);
-void	sort(t_stack **a, t_stack **b);
-void	sort_3(t_stack **a);
-void	sort_5(t_stack **a, t_stack **b);
 
 #endif
