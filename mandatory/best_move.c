@@ -3,44 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   best_move.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: darkab <darkab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 11:57:06 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/24 21:40:41 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:54:55 by darkab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	loop_in_a(t_stack **a, int *right_pos, int	*pos_in_a, int num)
-{
-	t_stack	*current;
-
-	current = *a;
-	while (current)
-	{
-		if (current->next && current->value < num && current->next->value > num)
-		{
-			*right_pos = current->next->value;
-			*pos_in_a = current->next->index;
-			return ;
-		}
-		current = current->next;
-	}
-}
-
-static int	*best_in_a(t_stack **a, int num, int *arr, int size, int *min_and_max)
+static int	*best_in_a(t_stack **a, int num, int *arr, int *min_and_max)
 {
 	int	value;
 	int	actions;
 	int	pos;
+	int	size;
 
 	(1) && (value = -1, actions = 0, size = ft_lstsize(*a));
 	if (size && (num > min_and_max[1] || num < min_and_max[0]))
-	{
-		value = min_and_max[0];
-		pos = get_pos(a, value);
-	}
+		(1) && (value = min_and_max[0], pos = get_pos(a, value));
 	else if ((*a)->value > num && num > ft_lstlast(*a)->value)
 	{
 		value = (*a)->value;
@@ -58,20 +39,20 @@ static int	*best_in_a(t_stack **a, int num, int *arr, int size, int *min_and_max
 	return (arr);
 }
 
-static void	calc_best(t_stack **a, t_stack **b, int *num)
+static void	calc_best(t_stack **a, t_stack **b, int *num, int *min_and_max)
 {
 	t_stack	*tmp;
 	int		lowest;
 	int		actions;
 	int		arr[4];
 	int		size_b;
-	int	min_and_max[2];
-	
-	get_min_and_max(a, min_and_max);
-	(1) && (size_b = ft_lstsize(*b), lowest = ft_lstsize(*a) + size_b, actions = 0, tmp = *b);
+
+	(1) && (size_b = ft_lstsize(*b), lowest = ft_lstsize(*a) + size_b,
+	actions = 0, tmp = *b);
 	while (tmp)
 	{
-		(1) && (best_in_a(a, tmp->value, arr, (lowest - size_b), min_and_max), actions = arr[0]);
+		(1) && (best_in_a(a, tmp->value, arr, min_and_max),
+		actions = arr[0]);
 		if (tmp->index <= (size_b / 2))
 			actions += tmp->index;
 		else
@@ -85,22 +66,34 @@ static void	calc_best(t_stack **a, t_stack **b, int *num)
 	}
 }
 
+void	move_in_b(t_stack **a, t_stack **b, int *num, int *size_a_b)
+{
+	if ((*b)->value != num[0] && (*a)->value != num[1])
+	{
+		if (num[2] <= (size_a_b[1] / 2) && num[3] <= (size_a_b[0] / 2))
+			rr(a, b);
+		else if (num[2] > (size_a_b[1] / 2) && num[3] > (size_a_b[0] / 2))
+			rrr(a, b);
+	}
+}
+
 static void	sort_a_and_b(t_stack **a, t_stack **b)
 {
 	int		num[4];
 	int		size_a;
 	int		size_b;
+	int		size_a_b[2];
+	int		min_and_max[2];
 
 	while (*b)
 	{
-		(1) && (calc_best(a, b, num), size_b = ft_lstsize(*b), size_a = ft_lstsize(*a));
+		(1) && (get_min_and_max(a, min_and_max),
+		calc_best(a, b, num, min_and_max), size_b = ft_lstsize(*b),
+		size_a = ft_lstsize(*a), size_a_b[0] = size_a, size_a_b[1] = size_b);
 		while ((*b)->value != num[0] || (*a)->value != num[1])
 		{
-			if ((*b)->value != num[0] && (*a)->value != num[1] && num[2] <= (size_b / 2) && num[3] <= (size_a / 2))
-				rr(a, b);
-			else if ((*b)->value != num[0] && (*a)->value != num[1] && num[2] > (size_b / 2) && num[3] > (size_a / 2))
-				rrr(a, b);
-			else if ((*b)->value != num[0] && num[2] <= (size_b / 2))
+			move_in_b(a, b, num, size_a_b);
+			if ((*b)->value != num[0] && num[2] <= (size_b / 2))
 				rb(b, 1);
 			else if ((*b)->value != num[0] && num[2] > (size_b / 2))
 				rrb(b, 1);
@@ -117,7 +110,7 @@ void	best_move(t_stack **a, t_stack **b)
 {
 	int	min_and_max[2];
 	int	size_a;
-	
+
 	longest_sub(a);
 	while (check_sub_in_a(a))
 	{

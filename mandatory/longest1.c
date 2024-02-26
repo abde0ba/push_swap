@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   longest1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: darkab <darkab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 11:53:52 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/24 15:34:50 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:55:40 by darkab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	longest_increasing_subsequence(t_stack **a, int *arr, int n)
 	int		*parent;
 	int		index_end_and_size[3];
 	int		*subsequence;
-
 
 	(1) && (index_end_and_size[0] = 0, index_end_and_size[1] = 0,
 	index_end_and_size[2] = n, lis = malloc(n * sizeof(int)),

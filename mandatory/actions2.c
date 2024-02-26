@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: darkab <darkab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:16:14 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/24 15:34:33 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:55:05 by darkab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,21 @@ void	rrr(t_stack **a, t_stack **b)
 	rra(a, 0);
 	rrb(b, 0);
 	write(1, "rrr\n", 4);
+}
+
+void	loop_in_a(t_stack **a, int *right_pos, int	*pos_in_a, int num)
+{
+	t_stack	*current;
+
+	current = *a;
+	while (current)
+	{
+		if (current->next && current->value < num && current->next->value > num)
+		{
+			*right_pos = current->next->value;
+			*pos_in_a = current->next->index;
+			return ;
+		}
+		current = current->next;
+	}
 }

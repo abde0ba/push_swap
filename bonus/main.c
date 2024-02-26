@@ -31,16 +31,16 @@ void	init_stack_a(t_stack **a, int ac, char **av)
 void	check_instructions(char	*str, char **all)
 {
 	if (ft_strncmp(str, "pb", ft_strlen(str) - 1) == 0
-	|| ft_strncmp(str, "pa", ft_strlen(str) - 1) == 0
-	|| ft_strncmp(str, "sa", ft_strlen(str) - 1) == 0
-	|| ft_strncmp(str, "sb", ft_strlen(str) - 1) == 0
-	|| ft_strncmp(str, "ss", ft_strlen(str) - 1) == 0
-	|| ft_strncmp(str, "ra", ft_strlen(str) - 1) == 0
-	|| ft_strncmp(str, "rb", ft_strlen(str) - 1) == 0
-	|| ft_strncmp(str, "rr", ft_strlen(str) - 1) == 0
-	|| ft_strncmp(str, "rra", ft_strlen(str) - 1) == 0
-	|| ft_strncmp(str, "rrb", ft_strlen(str) - 1) == 0
-	|| ft_strncmp(str, "rrr", ft_strlen(str) - 1) == 0)
+		|| ft_strncmp(str, "pa", ft_strlen(str) - 1) == 0
+		|| ft_strncmp(str, "sa", ft_strlen(str) - 1) == 0
+		|| ft_strncmp(str, "sb", ft_strlen(str) - 1) == 0
+		|| ft_strncmp(str, "ss", ft_strlen(str) - 1) == 0
+		|| ft_strncmp(str, "ra", ft_strlen(str) - 1) == 0
+		|| ft_strncmp(str, "rb", ft_strlen(str) - 1) == 0
+		|| ft_strncmp(str, "rr", ft_strlen(str) - 1) == 0
+		|| ft_strncmp(str, "rra", ft_strlen(str) - 1) == 0
+		|| ft_strncmp(str, "rrb", ft_strlen(str) - 1) == 0
+		|| ft_strncmp(str, "rrr", ft_strlen(str) - 1) == 0)
 	{
 		*all = ft_strjoin(*all, str);
 		free(str);
@@ -89,10 +89,11 @@ static void	check_and_apply(t_stack **a, t_stack **b)
 	char	*instruction;
 	char	**moves;
 
-	(1) && (all = NULL, instruction = NULL, instruction= get_next_line(0));
+	(1) && (all = NULL, instruction = NULL, instruction = get_next_line(0));
 	while (instruction)
-		(1) && (check_instructions(instruction, &all), instruction = get_next_line(0));
-	(1) && (moves = ft_split(all, '\n'), free(all), i = 0);	
+		(1) && (check_instructions(instruction, &all),
+		instruction = get_next_line(0));
+	(1) && (moves = ft_split(all, '\n'), free(all), i = 0);
 	while (moves && moves[i] && *a)
 	{
 		apply_moves(a, b, moves[i]);

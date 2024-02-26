@@ -6,7 +6,7 @@
 /*   By: darkab <darkab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 12:02:32 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/26 13:23:17 by darkab           ###   ########.fr       */
+/*   Updated: 2024/02/26 15:59:36 by darkab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	indexing(t_stack *tmp)
 		tmp = tmp->next;
 	}
 }
-
 
 int	get_pos(t_stack **stack, int num)
 {

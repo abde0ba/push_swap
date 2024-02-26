@@ -6,7 +6,7 @@
 /*   By: darkab <darkab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:55:00 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/25 15:53:45 by darkab           ###   ########.fr       */
+/*   Updated: 2024/02/26 15:57:10 by darkab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static char	**fill_in(const char *s, char c, int count, char **arr)
 		if (!arr[w])
 		{
 			free_prev(arr, w);
-			return NULL;
+			return (NULL);
 		}
 		while (*s && *s != c)
 			s++;

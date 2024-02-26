@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: darkab <darkab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:55:00 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/24 15:35:06 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:56:44 by darkab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static char	**fill_in(const char *s, char c, int count, char **arr)
 		if (!arr[w])
 		{
 			free_prev(arr, w);
-			return NULL;
+			return (NULL);
 		}
 		while (*s && *s != c)
 			s++;

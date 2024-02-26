@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: darkab <darkab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 12:02:32 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/24 21:21:52 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:55:57 by darkab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	get_median(t_stack **stack, int set)
 	int		i;
 	int		size;
 
-	(1) && (i = 0, current = *stack, size = ft_lstsize(*stack), sorted = malloc(size * sizeof(int)));
+	(1) && (i = 0, current = *stack, size = ft_lstsize(*stack),
+	sorted = malloc(size * sizeof(int)));
 	if (!sorted)
 		return (-1);
 	while (current)

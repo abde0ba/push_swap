@@ -6,7 +6,7 @@
 /*   By: darkab <darkab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:32:25 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/25 16:04:48 by darkab           ###   ########.fr       */
+/*   Updated: 2024/02/26 16:04:23 by darkab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	longest_sub(t_stack **a);
 int		get_median(t_stack **stack, int set);
 int		*get_min_and_max(t_stack **stack, int *min_and_max);
 int		get_pos(t_stack **stack, int num);
+void	loop_in_a(t_stack **a, int *right_pos, int	*pos_in_a, int num);
 void	best_move(t_stack **a, t_stack **b);
 
 void	bubble_sort(int *sorted, int n);
