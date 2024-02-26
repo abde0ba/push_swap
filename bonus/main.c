@@ -90,15 +90,10 @@ static void	check_and_apply(t_stack **a, t_stack **b)
 	char	**moves;
 
 	(1) && (all = NULL, instruction = NULL, instruction= get_next_line(0));
-	if (!check_sorted(*a) && *b == NULL)
-		return (write(1, "OK\n", 4), ft_lstclear(a), 0);
 	while (instruction)
-	{
-		check_instructions(instruction, &all);
-		instruction = get_next_line(0);
-	}
+		(1) && (check_instructions(instruction, &all), instruction = get_next_line(0));
 	(1) && (moves = ft_split(all, '\n'), free(all), i = 0);	
-	while (moves[i])
+	while (moves && moves[i] && *a)
 	{
 		apply_moves(a, b, moves[i]);
 		free(moves[i]);

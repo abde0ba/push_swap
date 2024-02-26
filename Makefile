@@ -19,7 +19,7 @@ B_OBJS=$(B_SRCS:.c=.o)
 
 CC= cc
 
-CFLAGS= -Wall -Wextra
+CFLAGS= -Wall -Wextra -Werror
 
 RM= rm -rf
 

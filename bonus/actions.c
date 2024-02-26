@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: darkab <darkab@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:45:50 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/25 19:21:31 by darkab           ###   ########.fr       */
+/*   Updated: 2024/02/26 13:54:34 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	sa(t_stack **a)
 {
 	t_stack	*tmp;
 
+	if (ft_lstsize(*a) < 2)
+		return ;
 	tmp = (*a)->next;
 	(*a)->next = (*a)->next->next;
 	(*a)->index = 1;
@@ -28,6 +30,8 @@ void	sb(t_stack **b)
 {
 	t_stack	*tmp;
 
+	if (ft_lstsize(*b) < 2)
+		return ;
 	tmp = (*b)->next;
 	(*b)->next = (*b)->next->next;
 	(*b)->index = 1;
@@ -46,6 +50,8 @@ void	pa(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
 
+	if (ft_lstsize(*b) < 1)
+		return ;
 	tmp = *b;
 	if ((*b))
 		*b = (*b)->next;
