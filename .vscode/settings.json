@@ -1,5 +1,7 @@
 {
 	"files.associations": {
-		"sstream": "c"
+		"sstream": "c",
+		"algorithm": "c",
+		"push_swap_bonus.h": "c"
 	}
 }

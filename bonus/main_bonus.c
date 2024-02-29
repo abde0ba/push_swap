@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:34 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/29 12:06:09 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/29 18:15:16 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,17 @@ void	init_stack_a(t_stack **a, int ac, char **av)
 
 void	check_instructions(char	*str, char **all, t_stack **a)
 {
-	if (ft_strncmp(str, "pb", ft_strlen("pb")) == 0
-		|| ft_strncmp(str, "pa", ft_strlen("pa")) == 0
-		|| ft_strncmp(str, "sa", ft_strlen("sa")) == 0
-		|| ft_strncmp(str, "sb", ft_strlen("sb")) == 0
-		|| ft_strncmp(str, "ss", ft_strlen("ss")) == 0
-		|| ft_strncmp(str, "ra", ft_strlen("ra")) == 0
-		|| ft_strncmp(str, "rb", ft_strlen("rb")) == 0
-		|| ft_strncmp(str, "rr", ft_strlen("rr")) == 0
-		|| ft_strncmp(str, "rra", ft_strlen("rra")) == 0
-		|| ft_strncmp(str, "rrb", ft_strlen("rrb")) == 0
-		|| ft_strncmp(str, "rrr", ft_strlen("rrr")) == 0)
+	if (ft_strncmp(str, "pb\n", ft_strlen(str)) == 0
+		|| ft_strncmp(str, "pa\n", ft_strlen(str)) == 0
+		|| ft_strncmp(str, "sa\n", ft_strlen(str)) == 0
+		|| ft_strncmp(str, "sb\n", ft_strlen(str)) == 0
+		|| ft_strncmp(str, "ss\n", ft_strlen(str)) == 0
+		|| ft_strncmp(str, "ra\n", ft_strlen(str)) == 0
+		|| ft_strncmp(str, "rb\n", ft_strlen(str)) == 0
+		|| ft_strncmp(str, "rr\n", ft_strlen(str)) == 0
+		|| ft_strncmp(str, "rra\n", ft_strlen(str)) == 0
+		|| ft_strncmp(str, "rrb\n", ft_strlen(str)) == 0
+		|| ft_strncmp(str, "rrr\n", ft_strlen(str)) == 0)
 	{
 		*all = ft_strjoin(*all, str);
 		free(str);
@@ -101,10 +101,8 @@ static void	check_and_apply(t_stack **a, t_stack **b)
 
 	(1) && (all = NULL, instruction = get_next_line(0));
 	while (instruction)
-	{
-		check_instructions(instruction, &all, a);
-		instruction = get_next_line(0);
-	}
+		(1) && (check_instructions(instruction, &all, a),
+		instruction = get_next_line(0));
 	(1) && (moves = ft_split(all, '\n'), free(all), i = 0);
 	while (moves && moves[i])
 	{

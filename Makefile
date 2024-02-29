@@ -11,9 +11,9 @@ B_HEADER= bonus/push_swap_bonus.h
 
 BONUS = checker
 
-B_SRCS= bonus/actions.c bonus/actions1.c bonus/actions2.c \
-		bonus/main.c bonus/utils1.c bonus/utils2.c bonus/utils3.c bonus/utils4.c \
-		bonus/get_next_line.c bonus/get_next_line_utils.c
+B_SRCS= bonus/actions_bonus.c bonus/actions1_bonus.c bonus/actions2_bonus.c \
+		bonus/main_bonus.c bonus/utils1_bonus.c bonus/utils2_bonus.c bonus/utils3_bonus.c bonus/utils4_bonus.c \
+		bonus/get_next_line_bonus.c bonus/get_next_line_utils_bonus.c
 
 B_OBJS=$(B_SRCS:.c=.o)
 
