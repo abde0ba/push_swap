@@ -6,7 +6,7 @@
 /*   By: abbaraka <abbaraka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:14:34 by abbaraka          #+#    #+#             */
-/*   Updated: 2024/02/29 11:22:54 by abbaraka         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:06:09 by abbaraka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,17 +122,11 @@ static void	check_and_apply(t_stack **a, t_stack **b)
 		ft_lstclear(b);
 }
 
-void ff()
-{
-	system("leaks checker");
-}
-
 int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
 
-	atexit(ff);
 	(1) && (a = NULL, b = NULL);
 	if (ac >= 2)
 	{
